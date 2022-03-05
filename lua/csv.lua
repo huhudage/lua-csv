@@ -374,7 +374,7 @@ local function separated_values_iterator(buffer, parameters)
       advance(1)
       local current_pos = 0
       repeat
-        local a, b, c = field_find('"("?)', current_pos + 1)
+        local a, b, c = field_find('[^%\\]"("?)', current_pos + 1)
         current_pos = b
       until c ~= '"'
       if not current_pos then problem("unmatched quote") end
